@@ -113,9 +113,9 @@ dotnet run
 
 ### RTracking.Api
 
-- **Type**: ASP.NET Core 8 Web API
-- **Framework**: .NET 8.0
-- **Database**: MySQL (via Pomelo EF Core provider)
+- **Type**: ASP.NET Core 10 Web API
+- **Framework**: .NET 10.0
+- **Database**: MySQL (via Oracle EF Core provider)
 - **Features**:
   - RESTful API with controllers
   - Entity Framework Core
@@ -124,7 +124,7 @@ dotnet run
   - File storage for receipt images
 
 **Key Dependencies**:
-- Pomelo.EntityFrameworkCore.MySql
+- MySql.EntityFrameworkCore
 - Microsoft.EntityFrameworkCore.Design
 - Tesseract
 - Swashbuckle.AspNetCore

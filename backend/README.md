@@ -1,6 +1,6 @@
 # RTracking Backend API
 
-ASP.NET Core 8 Web API for Receipt Tracking Application.
+ASP.NET Core 10 Web API for Receipt Tracking Application.
 
 ## Project Setup
 
@@ -33,12 +33,12 @@ mkdir backend
 
 # Create the Web API project
 cd backend
-dotnet new webapi -n RTracking.Api -f net8.0
+dotnet new webapi -n RTracking.Api -f net10.0
 
 # Add required NuGet packages (already added to .csproj)
-# - Pomelo.EntityFrameworkCore.MySql (8.0.0)
+# - MySql.EntityFrameworkCore (10.0.0)
 # - Swashbuckle.AspNetCore (6.6.2)
-# - Microsoft.EntityFrameworkCore.Design (8.0.0)
+# - Microsoft.EntityFrameworkCore.Design (10.0.0)
 ```
 
 ## Configuration
@@ -61,7 +61,7 @@ Update the MySQL connection string in `appsettings.json` and `appsettings.Develo
 - ✅ Swagger enabled in Development environment
 - ✅ CORS configured for `http://localhost:4200`
 - ✅ Health endpoint at `GET /api/health`
-- ✅ Entity Framework Core with Pomelo.EntityFrameworkCore.MySql
+- ✅ Entity Framework Core with MySql.EntityFrameworkCore
 - ✅ ApplicationDbContext configured
 - ✅ Migrations folder created
 

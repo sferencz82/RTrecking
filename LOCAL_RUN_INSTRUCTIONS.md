@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Docker and Docker Compose installed
-- .NET 8 SDK (for local backend development, optional)
+- .NET 10 SDK (for local backend development, optional)
 - Node.js and npm (for local frontend development, optional)
 
 ## Option 1: Docker Compose (Recommended)

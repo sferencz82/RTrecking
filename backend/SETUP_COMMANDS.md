@@ -9,15 +9,15 @@ cd C:\cursor\antygravity\git\RTracking
 # Create backend directory
 mkdir backend
 
-# Create ASP.NET Core 8 Web API project
+# Create ASP.NET Core 10 Web API project
 cd backend
-dotnet new webapi -n RTracking.Api -f net8.0
+dotnet new webapi -n RTracking.Api -f net10.0
 
 # Navigate to project directory
 cd RTracking.Api
 
 # Add required NuGet packages
-dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.0
+dotnet add package MySql.EntityFrameworkCore --version 10.0.0
 dotnet add package Swashbuckle.AspNetCore
 dotnet add package Microsoft.EntityFrameworkCore.Design
 
@@ -55,7 +55,7 @@ backend/RTracking.Api/
 ✅ **Swagger** - Enabled in Development environment at `/swagger`  
 ✅ **CORS** - Configured for `http://localhost:4200`  
 ✅ **Health Endpoint** - `GET /api/health`  
-✅ **EF Core** - Configured with Pomelo.EntityFrameworkCore.MySql  
+✅ **EF Core** - Configured with MySql.EntityFrameworkCore  
 ✅ **DbContext** - ApplicationDbContext with all entities  
 ✅ **Migrations Folder** - Ready for EF Core migrations  
 

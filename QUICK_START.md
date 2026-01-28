@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Docker and Docker Compose
-- .NET 8 SDK (for creating migrations)
+- .NET 10 SDK (for creating migrations)
 - Node.js (optional, for local frontend development)
 
 ## First Time Setup

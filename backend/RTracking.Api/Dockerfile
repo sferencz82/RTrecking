@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["RTracking.Api.csproj", "./"]
@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Install EF Core tools for migrations
-RUN dotnet tool install --global dotnet-ef --version 8.0.0 || true
+RUN dotnet tool install --global dotnet-ef --version 10.0.0 || true
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 # Create directories for uploads and tessdata
