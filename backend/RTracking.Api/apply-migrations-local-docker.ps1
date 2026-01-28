@@ -1,8 +1,8 @@
 # PowerShell script to manually apply database migrations
-$env:ConnectionStrings__Default="Server=localhost;Port=3307;Database=YOUR_DB;User=YOUR_USER;Password=YOUR_PASSWORD;"
+$env:ConnectionStrings__Default="Server=mysql;Port=3306;Database=r_tracking;User=rtracking;Password=rtrackingpassword;CharSet=utf8mb4;"
 Write-Host "Applying database migrations..." -ForegroundColor Green
-
-dotnet ef database update
+dotnet tool restore
+dotnet ef database update --project .\RTracking.Api\RTracking.Api.csproj --startup-project .\RTracking.Api.csproj
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Migrations applied successfully!" -ForegroundColor Green
