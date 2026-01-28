@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MySql.EntityFrameworkCore.Extensions;
 using RTracking.Api.Data;
 using RTracking.Api.Services;
 
@@ -23,7 +24,7 @@ builder.Services.AddCors(options =>
 // Add Entity Framework Core with MySQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseMySQL(connectionString));
 
 // Register application services
 builder.Services.AddScoped<IFileStorageService, FileStorageService>();

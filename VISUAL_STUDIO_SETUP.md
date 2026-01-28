@@ -110,7 +110,7 @@ Migrations are automatically applied when running in Development mode (see `Prog
 
 The solution uses the following key packages:
 
-- **Pomelo.EntityFrameworkCore.MySql** - MySQL provider for EF Core
+- **MySql.EntityFrameworkCore** - MySQL provider for EF Core
 - **Microsoft.EntityFrameworkCore.Design** - EF Core tools
 - **Tesseract** - OCR functionality
 - **Swashbuckle.AspNetCore** - Swagger/OpenAPI
