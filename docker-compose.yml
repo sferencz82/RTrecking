@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: rtracking-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: RTrackingDb
+      MYSQL_USER: rtracking
+      MYSQL_PASSWORD: rtrackingpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - rtracking-network
+
+  backend:
+    build:
+      context: ./backend/RTracking.Api
+      dockerfile: Dockerfile
+    container_name: rtracking-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mysql;Port=3306;Database=RTrackingDb;User=rtracking;Password=rtrackingpassword;CharSet=utf8mb4;
+    ports:
+      - "5000:8080"
+      - "5001:8081"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./backend/RTracking.Api/wwwroot/uploads:/app/wwwroot/uploads
+      - ./backend/RTracking.Api/tessdata:/app/tessdata
+      - ./backend/RTracking.Api/Migrations:/app/Migrations
+    networks:
+      - rtracking-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rtracking-frontend
+    ports:
+      - "4200:4200"
+    environment:
+      - API_BASE_URL=http://localhost:5000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - rtracking-network
+    command: npm start
+
+volumes:
+  mysql_data:
+
+networks:
+  rtracking-network:
+    driver: bridge
