@@ -84,14 +84,29 @@ To create your first migration (after updating the connection string):
 
 ```bash
 cd backend/RTracking.Api
+dotnet tool restore
 dotnet ef migrations add InitialCreate --output-dir Migrations
 ```
 
 To apply migrations to the database:
 
 ```bash
+dotnet tool restore
 dotnet ef database update
 ```
+
+If you run migrations from the repo root (or a different directory), specify the project explicitly:
+
+```bash
+dotnet tool restore --tool-manifest backend/RTracking.Api/.config/dotnet-tools.json
+dotnet ef database update --project backend/RTracking.Api/RTracking.Api.csproj --startup-project backend/RTracking.Api/RTracking.Api.csproj
+```
+
+> Note: There is no `RTracking.Data` project in this repository. Use `RTracking.Api.csproj` for both `--project` and `--startup-project`.
+
+### Seed Data
+
+Category seed data is configured in `ApplicationDbContext` and will be applied as part of the EF Core migrations.
 
 ## Testing the Health Endpoint
 

@@ -2,7 +2,8 @@
 
 Write-Host "Applying database migrations..." -ForegroundColor Green
 
-dotnet ef database update
+dotnet tool restore
+dotnet ef database update --project .\RTracking.Api.csproj --startup-project .\RTracking.Api.csproj
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Migrations applied successfully!" -ForegroundColor Green
